@@ -1,13 +1,12 @@
 package com.couchbase.lite.listener;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.util.concurrent.ScheduledExecutorService;
-
-
 import com.couchbase.lite.Manager;
 import com.couchbase.lite.router.URLStreamHandlerFactory;
 import com.couchbase.lite.util.Log;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class LiteListener implements Runnable {
 
@@ -39,6 +38,7 @@ public class LiteListener implements Runnable {
         this.httpServer.setListener(this);
         this.listenPort = discoverEmptyPort(suggestedPort);
         this.httpServer.setPort(this.listenPort);
+	    this.httpServer.setTimeout(1);
         this.httpServer.setAllowedCredentials(allowedCredentials);
     }
 

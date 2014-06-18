@@ -39,8 +39,13 @@ public class LiteServer extends Serve {
     }
 
     public void setPort(int port) {
-        props.put("port", port);
+        props.put(ARG_PORT, port);
     }
+
+	public void setTimeout(int timeout) {
+		props.put(ARG_KEEPALIVE_TIMEOUT, timeout);
+	}
+
 
     @Override
     public int serve() {
