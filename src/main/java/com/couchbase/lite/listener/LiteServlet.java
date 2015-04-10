@@ -122,9 +122,9 @@ public class LiteServlet extends HttpServlet {
 
         router.setCallbackBlock(callbackBlock);
 
-        synchronized (manager) {
+//        synchronized (manager) {
             router.start();
-        }
+//        }
 
         try {
             doneSignal.await();
