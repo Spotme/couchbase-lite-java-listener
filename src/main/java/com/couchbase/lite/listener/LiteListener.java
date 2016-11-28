@@ -79,7 +79,7 @@ public class LiteListener implements Runnable {
     }
 
     public void stop() {
-        httpServer.notifyStop();
+        httpServer.stopBackground();
     }
 
     public void onServerThread(Runnable r) {

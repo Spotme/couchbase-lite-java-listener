@@ -2,6 +2,7 @@ package com.couchbase.lite.listener;
 
 import com.couchbase.lite.Manager;
 
+import java.io.IOException;
 import java.util.Properties;
 
 import Acme.Serve.Serve;
@@ -51,6 +52,12 @@ public class LiteServer extends Serve {
     public int serve() {
         //pass our custom properties in
         this.arguments = props;
+
+        try {
+            init();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //pass in the CBLServerInternal to the servlet
         LiteServlet servlet = new LiteServlet();
