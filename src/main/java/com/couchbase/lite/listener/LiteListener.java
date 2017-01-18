@@ -79,7 +79,12 @@ public class LiteListener implements Runnable {
     }
 
     public void stop() {
-        httpServer.stopBackground();
+        try {
+            httpServer.stopBackground();
+        } catch (NullPointerException e) {
+            Log.w(LiteListener.TAG, "Unable to stop non running server");
+        }
+
     }
 
     public void onServerThread(Runnable r) {
